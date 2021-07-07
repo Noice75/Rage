@@ -10,6 +10,7 @@ namespace Rage
 
 		void Run();
 	};
+
 	// Define in client
 	Application* CreateApplication();
 }

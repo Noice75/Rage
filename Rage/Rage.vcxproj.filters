@@ -27,9 +27,15 @@
     <ClInclude Include="src\Rage\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rage\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Rage\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
