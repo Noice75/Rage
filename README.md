@@ -9,6 +9,7 @@ Plan :
 The Plan for Rage is to make powerful 3D/2D Game Engine
 
 Main features to come:
+
 Fast 2D rendering (UI, particles, sprites, etc.)
 High-fidelity Physically-Based 3D rendering (this will be expanded later, 2D to come first)
 Support for Mac, Linux, Android and iOS
