@@ -1,3 +1,4 @@
+#include "rapch.h"
 #include "Application.h"
 
 #include "Rage/Events/ApplicationEvent.h"

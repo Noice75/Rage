@@ -2,9 +2,6 @@
 
 #include "Rage/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace Rage {
 
 	// Events in Rage are currently blocking, meaning when an event occurs it

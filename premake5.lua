@@ -18,6 +18,9 @@ project "Rage"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "rapch.h"
+	pchsource "Rage/src/rapch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

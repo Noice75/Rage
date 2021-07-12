@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Rage {
 
 	class RAGE_API WindowResizeEvent : public Event
