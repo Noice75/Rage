@@ -162,9 +162,11 @@
     <ClInclude Include="src\Rage\Events\MouseEvent.h" />
     <ClInclude Include="src\Rage\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Rage\Input.h" />
+    <ClInclude Include="src\Rage\KeyCodes.h" />
     <ClInclude Include="src\Rage\Layer.h" />
     <ClInclude Include="src\Rage\LayerStack.h" />
     <ClInclude Include="src\Rage\Log.h" />
+    <ClInclude Include="src\Rage\MouseButtonCodes.h" />
     <ClInclude Include="src\Rage\Window.h" />
     <ClInclude Include="src\rapch.h" />
   </ItemGroup>

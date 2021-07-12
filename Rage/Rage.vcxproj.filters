@@ -67,6 +67,8 @@
     <ClInclude Include="src\rapch.h" />
     <ClInclude Include="src\Rage\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Rage\KeyCodes.h" />
+    <ClInclude Include="src\Rage\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">

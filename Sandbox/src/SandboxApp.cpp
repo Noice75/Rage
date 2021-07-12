@@ -10,12 +10,19 @@ public:
 
 	void OnUpdate() override
 	{
-		RA_INFO("ExampleLayer::Update");
+		if (Rage::Input::IsKeyPressed(RA_KEY_TAB))
+			RA_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(Rage::Event& event) override
 	{
-		RA_TRACE("{0}", event);
+		if (event.GetEventType() == Rage::EventType::KeyPressed)
+		{
+			Rage::KeyPressedEvent& e = (Rage::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == RA_KEY_TAB)
+				RA_TRACE("Tab key is pressed (event)!");
+			RA_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 
 };
