@@ -40,6 +40,12 @@
     <ClInclude Include="src\Rage\Events\MouseEvent.h">
       <Filter>Rage\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rage\Layer.h">
+      <Filter>Rage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\LayerStack.h">
+      <Filter>Rage</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rage\Log.h">
       <Filter>Rage</Filter>
     </ClInclude>
@@ -53,6 +59,12 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Rage\Application.cpp">
+      <Filter>Rage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\Layer.cpp">
+      <Filter>Rage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\LayerStack.cpp">
       <Filter>Rage</Filter>
     </ClCompile>
     <ClCompile Include="src\Rage\Log.cpp">
