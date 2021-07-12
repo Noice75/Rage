@@ -1,5 +1,7 @@
 #include <Rage.h>
 
+//#include "imgui/imgui.h"
+
 class ExampleLayer : public Rage::Layer
 {
 public:
@@ -13,6 +15,13 @@ public:
 		if (Rage::Input::IsKeyPressed(RA_KEY_TAB))
 			RA_TRACE("Tab key is pressed (poll)!");
 	}
+
+	//virtual void OnImGuiRender() override
+	//{
+	//	ImGui::Begin("Test");
+	//	ImGui::Text("Hello World");
+	//	ImGui::End();
+	//}
 
 	void OnEvent(Rage::Event& event) override
 	{
@@ -34,7 +43,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Rage::ImGuiLayer());
 	}
 	~Sandbox()
 	{

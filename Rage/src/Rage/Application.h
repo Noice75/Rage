@@ -7,6 +7,8 @@
 #include "Events/Event.h"
 #include "Rage/Events/ApplicationEvent.h"
 
+#include "Rage/ImGui/ImGuiLayer.h"
+
 namespace Rage
 {
 	class RAGE_API Application
@@ -30,6 +32,7 @@ namespace Rage
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

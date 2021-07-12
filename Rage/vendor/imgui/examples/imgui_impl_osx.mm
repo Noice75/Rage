@@ -3,8 +3,9 @@
 // [BETA] Beta bindings, not well tested. If you want a portable application, prefer using the Glfw or SDL platform bindings on Mac.
 
 // Issues:
-// [ ] Platform: Keys are all generally very broken. Best using [event keycode] and not [event characters]..
-// [ ] Platform: Mouse cursor shapes and visibility are not supported (see end of https://github.com/glfw/glfw/issues/427)
+//  [ ] Platform: Keys are all generally very broken. Best using [event keycode] and not [event characters]..
+//  [ ] Platform: Mouse cursor shapes and visibility are not supported (see end of https://github.com/glfw/glfw/issues/427)
+//  [ ] Platform: Multi-viewport / platform windows.
 
 #include "imgui.h"
 #include "imgui_impl_osx.h"
@@ -53,14 +54,14 @@ bool ImGui_ImplOSX_Init()
     io.KeyMap[ImGuiKey_X]           = 'X';
     io.KeyMap[ImGuiKey_Y]           = 'Y';
     io.KeyMap[ImGuiKey_Z]           = 'Z';
-    
+
     io.SetClipboardTextFn = [](void*, const char* str) -> void
     {
         NSPasteboard* pasteboard = [NSPasteboard generalPasteboard];
         [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
         [pasteboard setString:[NSString stringWithUTF8String:str] forType:NSPasteboardTypeString];
     };
-    
+
     io.GetClipboardTextFn = [](void*) -> const char*
     {
         NSPasteboard* pasteboard = [NSPasteboard generalPasteboard];
@@ -71,7 +72,7 @@ bool ImGui_ImplOSX_Init()
         NSString* string = [pasteboard stringForType:NSPasteboardTypeString];
         if (string == nil)
             return NULL;
-            
+
         const char* string_c = (const char*)[string UTF8String];
         size_t string_len = strlen(string_c);
         static ImVector<char> s_clipboard;
@@ -79,7 +80,7 @@ bool ImGui_ImplOSX_Init()
         strcpy(s_clipboard.Data, string_c);
         return s_clipboard.Data;
     };
-    
+
     return true;
 }
 
@@ -235,6 +236,6 @@ bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
             resetKeys();
         return io.WantCaptureKeyboard;
     }
-    
+
     return false;
 }
