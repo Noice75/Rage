@@ -4,6 +4,9 @@
     <Filter Include="Rage">
       <UniqueIdentifier>{E4B08B7C-D0E7-8C0D-79D4-721065EA080F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Rage\Events">
+      <UniqueIdentifier>{48F49C0A-B4A9-1500-3D9E-0FD7A9520C04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Rage.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Rage\EntryPoint.h">
       <Filter>Rage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Events\ApplicationEvent.h">
+      <Filter>Rage\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Events\Event.h">
+      <Filter>Rage\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Events\KeyEvent.h">
+      <Filter>Rage\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Events\MouseEvent.h">
+      <Filter>Rage\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Rage\Log.h">
       <Filter>Rage</Filter>
