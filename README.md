@@ -34,7 +34,7 @@ Steps To Get It Running :
 3) Now open Rage.sln File in Visual Studio
 4) Set Sandbox as Startup Project if not already
 5) Try to run the program using F5 key 
-6) Now you Can Run Use the Engine
+6) Now you Can Run and Use the Engine
 
 
 
