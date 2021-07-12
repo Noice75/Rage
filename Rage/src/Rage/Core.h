@@ -10,4 +10,12 @@
 	#error RAGE only supports Windows!
 #endif
 
+#ifdef RA_ENABLE_ASSERTS
+        #define RA_ASSERT(x, ...) { if(!(x)) { RA_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+        #define RA_CORE_ASSERT(x, ...) { if(!(x)) { RA_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+        #define RA_ASSERT(x, ...)
+        #define RA_CORE_ASSERT(x, ...)
+#endif
+
 #define BIT(x) (1 << x)

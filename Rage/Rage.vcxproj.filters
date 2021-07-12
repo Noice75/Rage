@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Rage">
       <UniqueIdentifier>{E4B08B7C-D0E7-8C0D-79D4-721065EA080F}</UniqueIdentifier>
     </Filter>
@@ -9,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rage.h" />
     <ClInclude Include="src\Rage\Application.h">
       <Filter>Rage</Filter>
@@ -34,9 +43,15 @@
     <ClInclude Include="src\Rage\Log.h">
       <Filter>Rage</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rage\Window.h">
+      <Filter>Rage</Filter>
+    </ClInclude>
     <ClInclude Include="src\rapch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Rage\Application.cpp">
       <Filter>Rage</Filter>
     </ClCompile>
