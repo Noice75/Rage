@@ -5,7 +5,7 @@
 	path = Rage/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
 [submodule "Rage/vendor/imgui"]
-	path = Hazel/vendor/imgui
+	path = Rage/vendor/imgui
 	url = https://github.com/TheCherno/imgui
 [submodule "Rage/vendor/glm"]
 	path = Rage/vendor/glm

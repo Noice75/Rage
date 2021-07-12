@@ -1,6 +1,6 @@
 #pragma once
 
-// used by hazel application
+// used by rage application
 #include "Rage/Application.h"
 #include "Rage/Layer.h"
 #include "Rage/Log.h"
