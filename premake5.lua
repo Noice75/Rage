@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Rage/vendor/GLFW/include"
+IncludeDir["Glad"] = "Rage/vendor/Glad/include"
 
 include "Rage/vendor/GLFW"
+include "Rage/vendor/Glad"
 
 project "Rage"
 	location "Rage"
@@ -37,12 +39,14 @@ project "Rage"
 	{
 	    "%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links 
 	{ 
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -54,7 +58,8 @@ project "Rage"
 		defines
 		{
 			"RA_PLATFORM_WINDOWS",
-			"RA_BUILD_DLL"
+			"RA_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
