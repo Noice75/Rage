@@ -31,7 +31,7 @@ Steps To Get It Running :
 
 1) You will need Visual Studio 2019 or higher with C++
 2) Before opening solution in visual studio run "GenerateProjects.bat" file
-3) Now open Rage.slh File in Visual Studio
+3) Now open Rage.sln File in Visual Studio
 4) Set Sandbox as Startup Project if not already
 5) Try to run the program using F5 key 
 6) Now you Can Run Use the Engine
