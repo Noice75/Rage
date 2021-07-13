@@ -110,6 +110,7 @@ project "Sandbox"
 	{
 		"Rage/vendor/spdlog/include",
 		"Rage/src",
+		"Rage/vendor",
 		"%{IncludeDir.glm}"
 	}
 

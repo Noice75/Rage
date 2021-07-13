@@ -91,6 +91,7 @@ namespace Rage {
 	{
 		static bool show = true;
 		ImGui::ShowDemoWindow(&show);
+
 	}
 
 }
