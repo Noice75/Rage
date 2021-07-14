@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef RA_PLATFORM_WINDOWS
+#if RA_DYNAMIC_LINK
 	#ifdef RA_BUILD_DLL
 		#define RAGE_API __declspec(dllexport)
 	#else
 		#define RAGE_API __declspec(dllimport)
 	#endif
+#else
+    #define RAGE_API
+#endif
 #else
 	#error RAGE only supports Windows!
 #endif

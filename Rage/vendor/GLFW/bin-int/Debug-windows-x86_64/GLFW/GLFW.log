@@ -1,6 +1,4 @@
-﻿cl : command line warning D9002: ignoring unknown option '-std=c11'
-cl : command line warning D9002: ignoring unknown option '-lgdi32'
-  context.c
+﻿  context.c
   egl_context.c
   init.c
   input.c
