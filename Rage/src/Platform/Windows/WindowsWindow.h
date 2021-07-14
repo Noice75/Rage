@@ -3,6 +3,7 @@
 #include "Rage/Window.h"
 
 #include <GLFW/glfw3.h>
+#include "Rage/Renderer/GraphicsContext.h"
 
 namespace Rage {
 
@@ -29,6 +30,7 @@ namespace Rage {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
