@@ -8,6 +8,7 @@
 #include "Rage/Events/ApplicationEvent.h"
 
 #include "Rage/ImGui/ImGuiLayer.h"
+#include "Rage/Renderer/Shader.h"
 
 namespace Rage
 {
@@ -37,6 +38,7 @@ namespace Rage
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 
 	private:
 		static Application* s_Instance;

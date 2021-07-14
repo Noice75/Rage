@@ -159,6 +159,7 @@
     <ClInclude Include="src\Rage\Log.h" />
     <ClInclude Include="src\Rage\MouseButtonCodes.h" />
     <ClInclude Include="src\Rage\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Rage\Renderer\Shader.h" />
     <ClInclude Include="src\Rage\Window.h" />
     <ClInclude Include="src\rapch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -587,6 +588,7 @@
     <ClCompile Include="src\Rage\Layer.cpp" />
     <ClCompile Include="src\Rage\LayerStack.cpp" />
     <ClCompile Include="src\Rage\Log.cpp" />
+    <ClCompile Include="src\Rage\Renderer\Shader.cpp" />
     <ClCompile Include="src\rapch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
