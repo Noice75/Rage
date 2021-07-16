@@ -48,6 +48,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -102,7 +105,16 @@
     <ClInclude Include="src\Rage\MouseButtonCodes.h">
       <Filter>src\Rage</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rage\Renderer\Buffer.h">
+      <Filter>src\Rage\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rage\Renderer\GraphicsContext.h">
+      <Filter>src\Rage\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Renderer\Renderer.h">
+      <Filter>src\Rage\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Renderer\Shader.h">
       <Filter>src\Rage\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Rage\Window.h">
@@ -1356,12 +1368,11 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rage\Renderer\Shader.h" />
-    <ClInclude Include="src\Rage\Renderer\Buffer.h" />
-    <ClInclude Include="src\Rage\Renderer\Renderer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1389,12 +1400,17 @@
     <ClCompile Include="src\Rage\Log.cpp">
       <Filter>src\Rage</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rage\Renderer\Buffer.cpp">
+      <Filter>src\Rage\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\Renderer\Renderer.cpp">
+      <Filter>src\Rage\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\Renderer\Shader.cpp">
+      <Filter>src\Rage\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\rapch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rage\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Rage\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Rage\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
   </ItemGroup>
 </Project>
