@@ -3,6 +3,8 @@
 #include "Rage/Core.h"
 #include "Rage/Events/Event.h"
 
+#include "Rage/Core/Timestep.h"
+
 namespace Rage {
 
 	class RAGE_API Layer
@@ -13,7 +15,7 @@ namespace Rage {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

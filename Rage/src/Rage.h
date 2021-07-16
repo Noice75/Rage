@@ -5,6 +5,8 @@
 #include "Rage/Layer.h"
 #include "Rage/Log.h"
 
+#include "Rage/Core/Timestep.h"
+
 #include "Rage/Input.h"
 #include "Rage/KeyCodes.h"
 #include "Rage/MouseButtonCodes.h"

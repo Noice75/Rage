@@ -149,6 +149,7 @@
     <ClInclude Include="src\Rage.h" />
     <ClInclude Include="src\Rage\Application.h" />
     <ClInclude Include="src\Rage\Core.h" />
+    <ClInclude Include="src\Rage\Core\Timestep.h" />
     <ClInclude Include="src\Rage\EntryPoint.h" />
     <ClInclude Include="src\Rage\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Rage\Events\Event.h" />

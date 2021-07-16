@@ -1374,6 +1374,7 @@
     <ClInclude Include="src\Rage\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Rage\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Rage\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
