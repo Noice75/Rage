@@ -163,6 +163,7 @@
     <ClInclude Include="src\Rage\MouseButtonCodes.h" />
     <ClInclude Include="src\Rage\Renderer\Buffer.h" />
     <ClInclude Include="src\Rage\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Rage\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Rage\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Rage\Renderer\Renderer.h" />
     <ClInclude Include="src\Rage\Renderer\RendererAPI.h" />
@@ -600,6 +601,7 @@
     <ClCompile Include="src\Rage\LayerStack.cpp" />
     <ClCompile Include="src\Rage\Log.cpp" />
     <ClCompile Include="src\Rage\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Rage\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Rage\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Rage\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Rage\Renderer\RendererAPI.cpp" />

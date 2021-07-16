@@ -13,6 +13,8 @@
 
 #include "Rage/Renderer/VertexArray.h"
 
+#include "Rage/Renderer/OrthographicCamera.h"
+
 namespace Rage
 {
 	class RAGE_API Application
@@ -45,6 +47,8 @@ namespace Rage
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 
 	private:
 		static Application* s_Instance;
