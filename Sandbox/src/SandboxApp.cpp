@@ -23,7 +23,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Rage::VertexBuffer> vertexBuffer;
+		Rage::Ref<Rage::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Rage::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Rage::BufferLayout layout = {
 			{ Rage::ShaderDataType::Float3, "a_Position" },
@@ -34,7 +34,7 @@ public:
 
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Rage::IndexBuffer> indexBuffer;
+		Rage::Ref<Rage::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Rage::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -47,7 +47,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Rage::VertexBuffer> squareVB;
+		Rage::Ref<Rage::VertexBuffer> squareVB;
 		squareVB.reset(Rage::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ Rage::ShaderDataType::Float3, "a_Position" }
@@ -55,7 +55,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Rage::IndexBuffer> squareIB;
+		Rage::Ref<Rage::IndexBuffer> squareIB;
 		squareIB.reset(Rage::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -194,11 +194,11 @@ public:
 
 private:
 
-	std::shared_ptr<Rage::Shader> m_Shader;
-	std::shared_ptr<Rage::VertexArray> m_VertexArray;
+	Rage::Ref<Rage::Shader> m_Shader;
+	Rage::Ref<Rage::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Rage::Shader> m_FlatColorShader;
-	std::shared_ptr<Rage::VertexArray> m_SquareVA;
+	Rage::Ref<Rage::Shader> m_FlatColorShader;
+	Rage::Ref<Rage::VertexArray> m_SquareVA;
 
 	Rage::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

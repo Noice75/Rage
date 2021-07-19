@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef RA_PLATFORM_WINDOWS
 #if RA_DYNAMIC_LINK
 	#ifdef RA_BUILD_DLL
@@ -28,4 +30,14 @@
 
 #define BIT(x) (1 << x)
 
-#define RA_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1) 
+#define RA_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace Rage {
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+}
