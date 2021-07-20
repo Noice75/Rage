@@ -19,6 +19,7 @@
 
 #include "Rage/Renderer/Buffer.h"
 #include "Rage/Renderer/Shader.h"
+#include "Rage/Renderer/Texture.h"
 #include "Rage/Renderer/VertexArray.h"
 
 #include "Rage/Renderer/OrthographicCamera.h"

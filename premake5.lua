@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Rage/vendor/GLFW/include"
 IncludeDir["Glad"] = "Rage/vendor/Glad/include"
 IncludeDir["ImGui"] = "Rage/vendor/imgui"
 IncludeDir["glm"] = "Rage/vendor/glm"
+IncludeDir["stb_image"] = "Rage/vendor/stb_image"
 
 include "Rage/vendor/GLFW"
 include "Rage/vendor/Glad"
@@ -46,6 +47,8 @@ project "Rage"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
@@ -64,6 +67,7 @@ project "Rage"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links 
