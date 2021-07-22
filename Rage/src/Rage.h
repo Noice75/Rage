@@ -10,6 +10,7 @@
 #include "Rage/Input.h"
 #include "Rage/KeyCodes.h"
 #include "Rage/MouseButtonCodes.h"
+#include "Rage/OrthographicCameraController.h"
 
 #include "Rage/ImGui/ImGuiLayer.h"
 
