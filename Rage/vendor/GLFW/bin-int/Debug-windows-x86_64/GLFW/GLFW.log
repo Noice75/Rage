@@ -14,4 +14,4 @@
   win32_window.c
   window.c
   Generating Code...
-  GLFW.vcxproj -> E:\dev\Backup\Rage\Rage\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.lib
+  GLFW.vcxproj -> E:\dev\Rage\Rage\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.lib
