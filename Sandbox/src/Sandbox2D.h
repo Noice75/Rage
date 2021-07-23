@@ -21,5 +21,7 @@ private:
 	Rage::Ref<Rage::VertexArray> m_SquareVA;
 	Rage::Ref<Rage::Shader> m_FlatColorShader;
 
+	Rage::Ref<Rage::Texture2D> m_CheckerboardTexture;
+
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
