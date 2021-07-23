@@ -16,6 +16,7 @@
 
 // ---Renderer------------------------
 #include "Rage/Renderer/Renderer.h"
+#include "Rage/Renderer/Renderer2D.h"
 #include "Rage/Renderer/RenderCommand.h"
 
 #include "Rage/Renderer/Buffer.h"

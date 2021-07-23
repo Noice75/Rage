@@ -171,6 +171,7 @@
     <ClInclude Include="src\Rage\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Rage\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Rage\Renderer\Renderer.h" />
+    <ClInclude Include="src\Rage\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Rage\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Rage\Renderer\Shader.h" />
     <ClInclude Include="src\Rage\Renderer\Texture.h" />
@@ -613,6 +614,7 @@
     <ClCompile Include="src\Rage\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Rage\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Rage\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Rage\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Rage\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Rage\Renderer\Shader.cpp" />
     <ClCompile Include="src\Rage\Renderer\Texture.cpp" />
