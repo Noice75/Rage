@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Rage/Window.h"
+#include "Rage/Core/Window.h"
 
 #include <GLFW/glfw3.h>
 #include "Rage/Renderer/GraphicsContext.h"

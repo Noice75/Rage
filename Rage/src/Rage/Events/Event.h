@@ -1,7 +1,7 @@
 #pragma once
 
 #include "rapch.h"
-#include "Rage/Core.h"
+#include "Rage/Core/Core.h"
 
 namespace Rage {
 

@@ -1,8 +1,8 @@
 #include "rapch.h"
 #include "OrthographicCameraController.h"
 
-#include "Rage/Input.h"
-#include "Rage/KeyCodes.h"
+#include "Rage/Core/Input.h"
+#include "Rage/Core/KeyCodes.h"
 
 namespace Rage {
 

@@ -5,7 +5,7 @@
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
 
-#include "Rage/Application.h"
+#include "Rage/Core/Application.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>

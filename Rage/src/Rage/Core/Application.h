@@ -3,8 +3,8 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "Rage/LayerStack.h"
-#include "Events/Event.h"
+#include "Rage/Core/LayerStack.h"
+#include "Rage/Events/Event.h"
 #include "Rage/Events/ApplicationEvent.h"
 
 #include "Rage/ImGui/ImGuiLayer.h"

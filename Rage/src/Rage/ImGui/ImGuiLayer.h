@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Rage/Layer.h"
+#include "Rage/Core/Layer.h"
 
 #include "Rage/Events/ApplicationEvent.h"
 #include "Rage/Events/KeyEvent.h"

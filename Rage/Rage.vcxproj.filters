@@ -81,17 +81,38 @@
     <ClInclude Include="src\Rage.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rage\Application.h">
-      <Filter>src\Rage</Filter>
+    <ClInclude Include="src\Rage\Core\Application.h">
+      <Filter>src\Rage\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rage\Core.h">
-      <Filter>src\Rage</Filter>
+    <ClInclude Include="src\Rage\Core\Core.h">
+      <Filter>src\Rage\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Core\EntryPoint.h">
+      <Filter>src\Rage\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Core\Input.h">
+      <Filter>src\Rage\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Core\KeyCodes.h">
+      <Filter>src\Rage\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Core\Layer.h">
+      <Filter>src\Rage\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Core\LayerStack.h">
+      <Filter>src\Rage\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Core\Log.h">
+      <Filter>src\Rage\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Core\MouseButtonCodes.h">
+      <Filter>src\Rage\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Rage\Core\Timestep.h">
       <Filter>src\Rage\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rage\EntryPoint.h">
-      <Filter>src\Rage</Filter>
+    <ClInclude Include="src\Rage\Core\Window.h">
+      <Filter>src\Rage\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Rage\Events\ApplicationEvent.h">
       <Filter>src\Rage\Events</Filter>
@@ -108,24 +129,6 @@
     <ClInclude Include="src\Rage\ImGui\ImGuiLayer.h">
       <Filter>src\Rage\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rage\Input.h">
-      <Filter>src\Rage</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rage\KeyCodes.h">
-      <Filter>src\Rage</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rage\Layer.h">
-      <Filter>src\Rage</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rage\LayerStack.h">
-      <Filter>src\Rage</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rage\Log.h">
-      <Filter>src\Rage</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rage\MouseButtonCodes.h">
-      <Filter>src\Rage</Filter>
-    </ClInclude>
     <ClInclude Include="src\Rage\Renderer\Buffer.h">
       <Filter>src\Rage\Renderer</Filter>
     </ClInclude>
@@ -133,6 +136,9 @@
       <Filter>src\Rage\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Rage\Renderer\OrthographicCamera.h">
+      <Filter>src\Rage\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rage\Renderer\OrthographicCameraController.h">
       <Filter>src\Rage\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Rage\Renderer\RenderCommand.h">
@@ -152,9 +158,6 @@
     </ClInclude>
     <ClInclude Include="src\Rage\Renderer\VertexArray.h">
       <Filter>src\Rage\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rage\Window.h">
-      <Filter>src\Rage</Filter>
     </ClInclude>
     <ClInclude Include="src\rapch.h">
       <Filter>src</Filter>
@@ -1407,7 +1410,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rage\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1434,8 +1436,17 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rage\Application.cpp">
-      <Filter>src\Rage</Filter>
+    <ClCompile Include="src\Rage\Core\Application.cpp">
+      <Filter>src\Rage\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\Core\Layer.cpp">
+      <Filter>src\Rage\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\Core\LayerStack.cpp">
+      <Filter>src\Rage\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\Core\Log.cpp">
+      <Filter>src\Rage\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Rage\ImGui\ImGuiBuild.cpp">
       <Filter>src\Rage\ImGui</Filter>
@@ -1443,19 +1454,13 @@
     <ClCompile Include="src\Rage\ImGui\ImGuiLayer.cpp">
       <Filter>src\Rage\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rage\Layer.cpp">
-      <Filter>src\Rage</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rage\LayerStack.cpp">
-      <Filter>src\Rage</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rage\Log.cpp">
-      <Filter>src\Rage</Filter>
-    </ClCompile>
     <ClCompile Include="src\Rage\Renderer\Buffer.cpp">
       <Filter>src\Rage\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Rage\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Rage\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Rage\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Rage\Renderer\RenderCommand.cpp">
@@ -1482,6 +1487,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rage\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>

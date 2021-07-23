@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Rage/Core.h"
+#include "Rage/Core/Core.h"
 #include "Rage/Events/Event.h"
 
 #include "Rage/Core/Timestep.h"

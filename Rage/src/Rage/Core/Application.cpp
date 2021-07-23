@@ -1,7 +1,7 @@
 #include "rapch.h"
 #include "Application.h"
 
-#include "Rage/Log.h"
+#include "Rage/Core/Log.h"
 
 #include "Rage/Renderer/Renderer.h"
 #include "Input.h"

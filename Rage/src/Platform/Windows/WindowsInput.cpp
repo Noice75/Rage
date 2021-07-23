@@ -1,7 +1,7 @@
 #include "rapch.h"
 #include "WindowsInput.h"
 
-#include "Rage/Application.h"
+#include "Rage/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Rage {

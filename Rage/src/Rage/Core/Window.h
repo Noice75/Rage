@@ -2,7 +2,7 @@
 
 #include "rapch.h"
 
-#include "Rage/Core.h"
+#include "Rage/Core/Core.h"
 #include "Rage/Events/Event.h"
 
 namespace Rage {
