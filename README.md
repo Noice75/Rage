@@ -31,13 +31,13 @@ Audio system
 
 # Steps To Get It Running :
 
-*1) You will need Visual Studio 2019 or higher with C++
-*2) Before opening solution in visual studio run "Setup.bat" file located in scripts folder
-*3) All dependency will be installed eg:- (Vulkan sdk) and Rage.sln will be generated
-*4) Now open Rage.sln File in Visual Studio
-*5) Set Ragenut as Startup Project if not already
-*6) Try to run the program using F5 key 
-*7) You are all set to Run and Use the Engine
+1) You will need Visual Studio 2019 or higher with C++
+2) Before opening solution in visual studio run "Setup.bat" file located in scripts folder
+3) All dependency will be installed eg:- (Vulkan sdk) and Rage.sln will be generated
+4) Now open Rage.sln File in Visual Studio
+5) Set Ragenut as Startup Project if not already
+6) Try to run the program using F5 key 
+7) You are all set to Run and Use the Engine
 
 # About Me
 
