@@ -1,22 +1,22 @@
-[submodule "Hazel/vendor/spdlog"]
-	path = Hazel/vendor/spdlog
+[submodule "Rage/vendor/spdlog"]
+	path = Rage/vendor/spdlog
 	url = ../../gabime/spdlog.git
 	branch = v1.x
-[submodule "Hazel/vendor/GLFW"]
-	path = Hazel/vendor/GLFW
+[submodule "Rage/vendor/GLFW"]
+	path = Rage/vendor/GLFW
 	url = ../../TheCherno/glfw.git
 	branch = master
-[submodule "Hazel/vendor/imgui"]
-	path = Hazel/vendor/imgui
+[submodule "Rage/vendor/imgui"]
+	path = Rage/vendor/imgui
 	url = ../../TheCherno/imgui.git
 	branch = docking
-[submodule "Hazel/vendor/glm"]
-	path = Hazel/vendor/glm
+[submodule "Rage/vendor/glm"]
+	path = Rage/vendor/glm
 	url = ../../g-truc/glm.git
 	branch = master
-[submodule "Hazel/vendor/yaml-cpp"]
-	path = Hazel/vendor/yaml-cpp
+[submodule "Rage/vendor/yaml-cpp"]
+	path = Rage/vendor/yaml-cpp
 	url = https://github.com/thecherno/yaml-cpp
-[submodule "Hazel/vendor/ImGuizmo"]
-	path = Hazel/vendor/ImGuizmo
+[submodule "Rage/vendor/ImGuizmo"]
+	path = Rage/vendor/ImGuizmo
 	url = https://github.com/thecherno/imguizmo

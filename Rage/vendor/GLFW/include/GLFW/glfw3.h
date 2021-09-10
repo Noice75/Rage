@@ -1643,7 +1643,7 @@ typedef struct GLFWvidmode
     /*! The bit depth of the blue channel of the video mode.
      */
     int blueBits;
-    /*! The refresh rate, in Hz, of the video mode.
+    /*! The refresh rate, in RA, of the video mode.
      */
     int refreshRate;
 } GLFWvidmode;
@@ -3427,7 +3427,7 @@ GLFWAPI GLFWmonitor* glfwGetWindowMonitor(GLFWwindow* window);
  *  area or video mode.
  *  @param[in] height The desired height, in screen coordinates, of the content
  *  area or video mode.
- *  @param[in] refreshRate The desired refresh rate, in Hz, of the video mode,
+ *  @param[in] refreshRate The desired refresh rate, in RA, of the video mode,
  *  or `GLFW_DONT_CARE`.
  *
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
@@ -5376,11 +5376,11 @@ GLFWAPI void glfwSetTime(double time);
  */
 GLFWAPI uint64_t glfwGetTimerValue(void);
 
-/*! @brief Returns the frequency, in Hz, of the raw timer.
+/*! @brief Returns the frequency, in RA, of the raw timer.
  *
- *  This function returns the frequency, in Hz, of the raw timer.
+ *  This function returns the frequency, in RA, of the raw timer.
  *
- *  @return The frequency of the timer, in Hz, or zero if an
+ *  @return The frequency of the timer, in RA, or zero if an
  *  [error](@ref error_handling) occurred.
  *
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED.

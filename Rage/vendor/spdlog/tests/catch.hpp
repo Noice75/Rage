@@ -6931,14 +6931,14 @@ namespace Catch {
     namespace {
 #ifdef CATCH_PLATFORM_WINDOWS
         uint64_t getCurrentTicks() {
-            static uint64_t hz=0, hzo=0;
-            if (!hz) {
-                QueryPerformanceFrequency( reinterpret_cast<LARGE_INTEGER*>( &hz ) );
-                QueryPerformanceCounter( reinterpret_cast<LARGE_INTEGER*>( &hzo ) );
+            static uint64_t RA=0, RAo=0;
+            if (!RA) {
+                QueryPerformanceFrequency( reinterpret_cast<LARGE_INTEGER*>( &RA ) );
+                QueryPerformanceCounter( reinterpret_cast<LARGE_INTEGER*>( &RAo ) );
             }
             uint64_t t;
             QueryPerformanceCounter( reinterpret_cast<LARGE_INTEGER*>( &t ) );
-            return ((t-hzo)*1000000)/hz;
+            return ((t-RAo)*1000000)/RA;
         }
 #else
         uint64_t getCurrentTicks() {

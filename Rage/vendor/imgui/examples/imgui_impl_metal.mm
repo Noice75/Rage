@@ -171,9 +171,9 @@ void ImGui_ImplMetal_DestroyDeviceObjects()
     return self;
 }
 
-- (nonnull id)copyWithZone:(nullable NSZone *)zone
+- (nonnull id)copyWitRAone:(nullable NSZone *)zone
 {
-    FramebufferDescriptor *copy = [[FramebufferDescriptor allocWithZone:zone] init];
+    FramebufferDescriptor *copy = [[FramebufferDescriptor allocWitRAone:zone] init];
     copy.sampleCount = self.sampleCount;
     copy.colorPixelFormat = self.colorPixelFormat;
     copy.depthPixelFormat = self.depthPixelFormat;
