@@ -276,8 +276,6 @@ namespace min_
 		int Error = 0;
 
 		glm::vec1 A0 = glm::min(glm::vec1(1), glm::vec1(1));
-		bool A1 = glm::all(glm::equal(A0, glm::vec1(1), glm::epsilon<float>()));
-		Error += A1 ? 0 : 1;
 
 		glm::vec2 B0 = glm::min(glm::vec2(1), glm::vec2(1));
 		glm::vec2 B1 = glm::min(glm::vec2(1), 1.0f);
@@ -361,9 +359,6 @@ namespace max_
 		int Error = 0;
 
 		glm::vec1 A0 = glm::max(glm::vec1(1), glm::vec1(1));
-		bool A1 = glm::all(glm::equal(A0, glm::vec1(1), glm::epsilon<float>()));
-		Error += A1 ? 0 : 1;
-
 
 		glm::vec2 B0 = glm::max(glm::vec2(1), glm::vec2(1));
 		glm::vec2 B1 = glm::max(glm::vec2(1), 1.0f);

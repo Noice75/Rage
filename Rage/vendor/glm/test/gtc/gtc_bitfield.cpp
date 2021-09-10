@@ -103,11 +103,11 @@ namespace mask
 		std::clock_t TimeZero = Timestamp5 - Timestamp4;
 		std::clock_t TimeHalf = Timestamp6 - Timestamp5;
 
-		std::printf("mask[mix]: %d\n", static_cast<unsigned int>(TimeMix));
-		std::printf("mask[loop]: %d\n", static_cast<unsigned int>(TimeLoop));
-		std::printf("mask[default]: %d\n", static_cast<unsigned int>(TimeDefault));
-		std::printf("mask[zero]: %d\n", static_cast<unsigned int>(TimeZero));
-		std::printf("mask[half]: %d\n", static_cast<unsigned int>(TimeHalf));
+		printf("mask[mix]: %d\n", static_cast<unsigned int>(TimeMix));
+		printf("mask[loop]: %d\n", static_cast<unsigned int>(TimeLoop));
+		printf("mask[default]: %d\n", static_cast<unsigned int>(TimeDefault));
+		printf("mask[zero]: %d\n", static_cast<unsigned int>(TimeZero));
+		printf("mask[half]: %d\n", static_cast<unsigned int>(TimeHalf));
 
 		return TimeDefault < TimeLoop ? 0 : 1;
 	}
@@ -895,22 +895,6 @@ namespace bitfieldInterleave5
 
 }//namespace bitfieldInterleave5
 
-static int test_bitfieldRotateRight()
-{
-	glm::ivec4 const A = glm::bitfieldRotateRight(glm::ivec4(2), 1);
-	glm::ivec4 const B = glm::ivec4(2) >> 1;
-
-	return A == B;
-}
-
-static int test_bitfieldRotateLeft()
-{
-	glm::ivec4 const A = glm::bitfieldRotateLeft(glm::ivec4(2), 1);
-	glm::ivec4 const B = glm::ivec4(2) << 1;
-
-	return A == B;
-}
-
 int main()
 {
 	int Error = 0;
@@ -923,9 +907,6 @@ int main()
 	Error += ::bitfieldInterleave3::test();
 	Error += ::bitfieldInterleave4::test();
 	Error += ::bitfieldInterleave::test();
-
-	Error += test_bitfieldRotateRight();
-	Error += test_bitfieldRotateLeft();
 
 #	ifdef NDEBUG
 		Error += ::mask::perf();

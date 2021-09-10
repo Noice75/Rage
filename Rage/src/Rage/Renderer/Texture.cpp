@@ -1,7 +1,7 @@
 #include "rapch.h"
-#include "Texture.h"
+#include "Rage/Renderer/Texture.h"
 
-#include "Renderer.h"
+#include "Rage/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Rage {
@@ -22,8 +22,8 @@ namespace Rage {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None:    RA_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLTexture2D>(path);
+			case RendererAPI::API::None:    RA_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+			case RendererAPI::API::OpenGL:  return CreateRef<OpenGLTexture2D>(path);
 		}
 
 		RA_CORE_ASSERT(false, "Unknown RendererAPI!");

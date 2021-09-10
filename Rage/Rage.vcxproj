@@ -76,11 +76,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>rapch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RA_PLATFORM_WINDOWS;RA_BUILD_DLL;GLFW_INCLUDE_NONE;RA_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;RA_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;vendor\entt\include;vendor\yaml-cpp\include;vendor\ImGuizmo;E:\Vulkan SDK\1.2.170.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -88,7 +90,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;vendor\VulkanSDK\Lib\shaderc_sharedd.lib;vendor\VulkanSDK\Lib\spirv-cross-cored.lib;vendor\VulkanSDK\Lib\spirv-cross-glsld.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -96,14 +98,15 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>rapch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RA_PLATFORM_WINDOWS;RA_BUILD_DLL;GLFW_INCLUDE_NONE;RA_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;RA_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;vendor\entt\include;vendor\yaml-cpp\include;vendor\ImGuizmo;E:\Vulkan SDK\1.2.170.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -112,7 +115,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;E:\Vulkan SDK\1.2.170.0\Lib\shaderc_shared.lib;E:\Vulkan SDK\1.2.170.0\Lib\spirv-cross-core.lib;E:\Vulkan SDK\1.2.170.0\Lib\spirv-cross-glsl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -120,14 +123,15 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>rapch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RA_PLATFORM_WINDOWS;RA_BUILD_DLL;GLFW_INCLUDE_NONE;RA_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;RA_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;vendor\entt\include;vendor\yaml-cpp\include;vendor\ImGuizmo;E:\Vulkan SDK\1.2.170.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -136,36 +140,45 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;E:\Vulkan SDK\1.2.170.0\Lib\shaderc_shared.lib;E:\Vulkan SDK\1.2.170.0\Lib\spirv-cross-core.lib;E:\Vulkan SDK\1.2.170.0\Lib\spirv-cross-glsl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLUniformBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Rage.h" />
     <ClInclude Include="src\Rage\Core\Application.h" />
-    <ClInclude Include="src\Rage\Core\Core.h" />
+    <ClInclude Include="src\Rage\Core\Assert.h" />
+    <ClInclude Include="src\Rage\Core\Base.h" />
     <ClInclude Include="src\Rage\Core\EntryPoint.h" />
     <ClInclude Include="src\Rage\Core\Input.h" />
     <ClInclude Include="src\Rage\Core\KeyCodes.h" />
     <ClInclude Include="src\Rage\Core\Layer.h" />
     <ClInclude Include="src\Rage\Core\LayerStack.h" />
     <ClInclude Include="src\Rage\Core\Log.h" />
-    <ClInclude Include="src\Rage\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Rage\Core\MouseCodes.h" />
+    <ClInclude Include="src\Rage\Core\PlatformDetection.h" />
+    <ClInclude Include="src\Rage\Core\Timer.h" />
     <ClInclude Include="src\Rage\Core\Timestep.h" />
     <ClInclude Include="src\Rage\Core\Window.h" />
+    <ClInclude Include="src\Rage\Debug\Instrumentor.h" />
     <ClInclude Include="src\Rage\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Rage\Events\Event.h" />
     <ClInclude Include="src\Rage\Events\KeyEvent.h" />
     <ClInclude Include="src\Rage\Events\MouseEvent.h" />
     <ClInclude Include="src\Rage\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Rage\Math\Math.h" />
     <ClInclude Include="src\Rage\Renderer\Buffer.h" />
+    <ClInclude Include="src\Rage\Renderer\Camera.h" />
+    <ClInclude Include="src\Rage\Renderer\EditorCamera.h" />
+    <ClInclude Include="src\Rage\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Rage\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Rage\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Rage\Renderer\OrthographicCameraController.h" />
@@ -175,8 +188,17 @@
     <ClInclude Include="src\Rage\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Rage\Renderer\Shader.h" />
     <ClInclude Include="src\Rage\Renderer\Texture.h" />
+    <ClInclude Include="src\Rage\Renderer\UniformBuffer.h" />
     <ClInclude Include="src\Rage\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Rage\Scene\Components.h" />
+    <ClInclude Include="src\Rage\Scene\Entity.h" />
+    <ClInclude Include="src\Rage\Scene\Scene.h" />
+    <ClInclude Include="src\Rage\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Rage\Scene\SceneSerializer.h" />
+    <ClInclude Include="src\Rage\Scene\ScriptableEntity.h" />
+    <ClInclude Include="src\Rage\Utils\PlatformUtils.h" />
     <ClInclude Include="src\rapch.h" />
+    <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
@@ -242,8 +264,6 @@
     <ClInclude Include="vendor\glm\glm\ext.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_clip_space.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_clip_space.inl" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_common.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_common.inl" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_double2x2.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_double2x2_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_double2x3.hpp" />
@@ -280,50 +300,12 @@
     <ClInclude Include="vendor\glm\glm\ext\matrix_float4x3_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_float4x4.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_float4x4_precision.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int2x2.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int2x2_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int2x3.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int2x3_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int2x4.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int2x4_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int3x2.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int3x2_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int3x3.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int3x3_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int3x4.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int3x4_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int4x2.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int4x2_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int4x3.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int4x3_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int4x4.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_int4x4_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_integer.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_integer.inl" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_projection.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_projection.inl" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_relational.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_relational.inl" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_transform.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\matrix_transform.inl" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint2x2.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint2x2_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint2x3.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint2x3_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint2x4.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint2x4_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint3x2.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint3x2_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint3x3.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint3x3_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint3x4.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint3x4_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint4x2.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint4x2_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint4x3.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint4x3_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint4x4.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\matrix_uint4x4_sized.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\quaternion_common.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\quaternion_common.inl" />
     <ClInclude Include="vendor\glm\glm\ext\quaternion_common_simd.inl" />
@@ -346,12 +328,6 @@
     <ClInclude Include="vendor\glm\glm\ext\scalar_constants.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\scalar_constants.inl" />
     <ClInclude Include="vendor\glm\glm\ext\scalar_int_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\scalar_integer.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\scalar_integer.inl" />
-    <ClInclude Include="vendor\glm\glm\ext\scalar_packing.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\scalar_packing.inl" />
-    <ClInclude Include="vendor\glm\glm\ext\scalar_reciprocal.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\scalar_reciprocal.inl" />
     <ClInclude Include="vendor\glm\glm\ext\scalar_relational.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\scalar_relational.inl" />
     <ClInclude Include="vendor\glm\glm\ext\scalar_uint_sized.hpp" />
@@ -384,29 +360,23 @@
     <ClInclude Include="vendor\glm\glm\ext\vector_float4.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_float4_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_int1.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_int1_sized.hpp" />
+    <ClInclude Include="vendor\glm\glm\ext\vector_int1_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_int2.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_int2_sized.hpp" />
+    <ClInclude Include="vendor\glm\glm\ext\vector_int2_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_int3.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_int3_sized.hpp" />
+    <ClInclude Include="vendor\glm\glm\ext\vector_int3_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_int4.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_int4_sized.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_integer.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_integer.inl" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_packing.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_packing.inl" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_reciprocal.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_reciprocal.inl" />
+    <ClInclude Include="vendor\glm\glm\ext\vector_int4_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_relational.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_relational.inl" />
     <ClInclude Include="vendor\glm\glm\ext\vector_uint1.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_uint1_sized.hpp" />
+    <ClInclude Include="vendor\glm\glm\ext\vector_uint1_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_uint2.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_uint2_sized.hpp" />
+    <ClInclude Include="vendor\glm\glm\ext\vector_uint2_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_uint3.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_uint3_sized.hpp" />
+    <ClInclude Include="vendor\glm\glm\ext\vector_uint3_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_uint4.hpp" />
-    <ClInclude Include="vendor\glm\glm\ext\vector_uint4_sized.hpp" />
+    <ClInclude Include="vendor\glm\glm\ext\vector_uint4_precision.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_ulp.hpp" />
     <ClInclude Include="vendor\glm\glm\ext\vector_ulp.inl" />
     <ClInclude Include="vendor\glm\glm\fwd.hpp" />
@@ -439,6 +409,7 @@
     <ClInclude Include="vendor\glm\glm\gtc\random.hpp" />
     <ClInclude Include="vendor\glm\glm\gtc\random.inl" />
     <ClInclude Include="vendor\glm\glm\gtc\reciprocal.hpp" />
+    <ClInclude Include="vendor\glm\glm\gtc\reciprocal.inl" />
     <ClInclude Include="vendor\glm\glm\gtc\round.hpp" />
     <ClInclude Include="vendor\glm\glm\gtc\round.inl" />
     <ClInclude Include="vendor\glm\glm\gtc\type_aligned.hpp" />
@@ -532,8 +503,6 @@
     <ClInclude Include="vendor\glm\glm\gtx\optimum_pow.inl" />
     <ClInclude Include="vendor\glm\glm\gtx\orthonormalize.hpp" />
     <ClInclude Include="vendor\glm\glm\gtx\orthonormalize.inl" />
-    <ClInclude Include="vendor\glm\glm\gtx\pca.hpp" />
-    <ClInclude Include="vendor\glm\glm\gtx\pca.inl" />
     <ClInclude Include="vendor\glm\glm\gtx\perpendicular.hpp" />
     <ClInclude Include="vendor\glm\glm\gtx\perpendicular.inl" />
     <ClInclude Include="vendor\glm\glm\gtx\polar_coordinates.hpp" />
@@ -597,19 +566,27 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLUniformBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsPlatformUtils.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Rage\Core\Application.cpp" />
     <ClCompile Include="src\Rage\Core\Layer.cpp" />
     <ClCompile Include="src\Rage\Core\LayerStack.cpp" />
     <ClCompile Include="src\Rage\Core\Log.cpp" />
+    <ClCompile Include="src\Rage\Core\Window.cpp" />
     <ClCompile Include="src\Rage\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Rage\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Rage\Math\Math.cpp" />
     <ClCompile Include="src\Rage\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Rage\Renderer\EditorCamera.cpp" />
+    <ClCompile Include="src\Rage\Renderer\Framebuffer.cpp" />
+    <ClCompile Include="src\Rage\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Rage\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Rage\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Rage\Renderer\RenderCommand.cpp" />
@@ -618,9 +595,17 @@
     <ClCompile Include="src\Rage\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Rage\Renderer\Shader.cpp" />
     <ClCompile Include="src\Rage\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Rage\Renderer\UniformBuffer.cpp" />
     <ClCompile Include="src\Rage\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Rage\Scene\Entity.cpp" />
+    <ClCompile Include="src\Rage\Scene\Scene.cpp" />
+    <ClCompile Include="src\Rage\Scene\SceneCamera.cpp" />
+    <ClCompile Include="src\Rage\Scene\SceneSerializer.cpp" />
     <ClCompile Include="src\rapch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
@@ -633,6 +618,9 @@
     </ProjectReference>
     <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\yaml-cpp\yaml-cpp.vcxproj">
+      <Project>{88F1A057-74BE-FB62-9DD7-E90A890331F1}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

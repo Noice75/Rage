@@ -3,79 +3,72 @@
 #include <cstdlib>     //To define "exit", req'd by XLC.
 #include <ctime>
 
-int nlz(unsigned x)
-{
-	int pop(unsigned x);
+int nlz(unsigned x) {
+   int pop(unsigned x);
 
-	x = x | (x >> 1);
-	x = x | (x >> 2);
-	x = x | (x >> 4);
-	x = x | (x >> 8);
-	x = x | (x >>16);
-	return pop(~x);
+   x = x | (x >> 1);
+   x = x | (x >> 2);
+   x = x | (x >> 4);
+   x = x | (x >> 8);
+   x = x | (x >>16);
+   return pop(~x);
 }
 
-int pop(unsigned x)
-{
-	x = x - ((x >> 1) & 0x55555555);
-	x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
-	x = (x + (x >> 4)) & 0x0F0F0F0F;
-	x = x + (x << 8);
-	x = x + (x << 16);
-	return x >> 24;
+int pop(unsigned x) {
+   x = x - ((x >> 1) & 0x55555555);
+   x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
+   x = (x + (x >> 4)) & 0x0F0F0F0F;
+   x = x + (x << 8);
+   x = x + (x << 16);
+   return x >> 24;
 }
 
-int ntz1(unsigned x)
-{
-	return 32 - nlz(~x & (x-1));
+int ntz1(unsigned x) {
+   return 32 - nlz(~x & (x-1));
 }
 
-int ntz2(unsigned x)
-{
-	return pop(~x & (x - 1));
+int ntz2(unsigned x) {
+   return pop(~x & (x - 1));
 }
 
-int ntz3(unsigned x)
-{
-	int n;
+int ntz3(unsigned x) {
+   int n;
 
-	if (x == 0) return(32);
-	n = 1;
-	if ((x & 0x0000FFFF) == 0) {n = n +16; x = x >>16;}
-	if ((x & 0x000000FF) == 0) {n = n + 8; x = x >> 8;}
-	if ((x & 0x0000000F) == 0) {n = n + 4; x = x >> 4;}
-	if ((x & 0x00000003) == 0) {n = n + 2; x = x >> 2;}
-	return n - (x & 1);
+   if (x == 0) return(32);
+   n = 1;
+   if ((x & 0x0000FFFF) == 0) {n = n +16; x = x >>16;}
+   if ((x & 0x000000FF) == 0) {n = n + 8; x = x >> 8;}
+   if ((x & 0x0000000F) == 0) {n = n + 4; x = x >> 4;}
+   if ((x & 0x00000003) == 0) {n = n + 2; x = x >> 2;}
+   return n - (x & 1);
 }
 
-int ntz4(unsigned x)
-{
-	unsigned y;
-	int n;
+int ntz4(unsigned x) {
+   unsigned y;
+   int n;
 
-	if (x == 0) return 32;
-	n = 31;
-	y = x <<16;  if (y != 0) {n = n -16;  x = y;}
-	y = x << 8;  if (y != 0) {n = n - 8;  x = y;}
-	y = x << 4;  if (y != 0) {n = n - 4;  x = y;}
-	y = x << 2;  if (y != 0) {n = n - 2;  x = y;}
-	y = x << 1;  if (y != 0) {n = n - 1;}
-	return n;
+   if (x == 0) return 32;
+   n = 31;
+   y = x <<16;  if (y != 0) {n = n -16;  x = y;}
+   y = x << 8;  if (y != 0) {n = n - 8;  x = y;}
+   y = x << 4;  if (y != 0) {n = n - 4;  x = y;}
+   y = x << 2;  if (y != 0) {n = n - 2;  x = y;}
+   y = x << 1;  if (y != 0) {n = n - 1;}
+   return n;
 }
 
-int ntz4a(unsigned x)
-{
-	unsigned y;
-	int n;
+int ntz4a(unsigned x) {
+   unsigned y;
+   int n;
 
-	if (x == 0) return 32;
-	n = 31;
-	y = x <<16;  if (y != 0) {n = n -16;  x = y;}
-	y = x << 8;  if (y != 0) {n = n - 8;  x = y;}
-	y = x << 4;  if (y != 0) {n = n - 4;  x = y;}
-	y = x << 2;  if (y != 0) {n = n - 2;  x = y;}
-	n = n - ((x << 1) >> 31);
-	return n;
+   if (x == 0) return 32;
+   n = 31;
+   y = x <<16;  if (y != 0) {n = n -16;  x = y;}
+   y = x << 8;  if (y != 0) {n = n - 8;  x = y;}
+   y = x << 4;  if (y != 0) {n = n - 4;  x = y;}
+   y = x << 2;  if (y != 0) {n = n - 2;  x = y;}
+   n = n - ((x << 1) >> 31);
+   return n;
 }
 
 int ntz5(char x)
@@ -97,18 +90,16 @@ int ntz5(char x)
 	else return 8;
 }
 
-int ntz6(unsigned x)
-{
-	int n;
+int ntz6(unsigned x) {
+   int n;
 
-	x = ~x & (x - 1);
-	n = 0;				// n = 32;
-	while(x != 0)
-	{					// while (x != 0) {
-		n = n + 1;		//    n = n - 1;
-		x = x >> 1;		//    x = x + x;
-	}					// }
-	return n;			// return n;
+   x = ~x & (x - 1);
+   n = 0;                       // n = 32;
+   while(x != 0) {              // while (x != 0) {
+      n = n + 1;                //    n = n - 1;
+      x = x >> 1;               //    x = x + x;
+   }                            // }
+   return n;                    // return n;
 }
 
 int ntz6a(unsigned x)
@@ -210,16 +201,15 @@ int ntz8a(unsigned x)
 /* Reiser's algorithm. Three ops including a "remainder,"
 plus an indexed load. */
 
-int ntz9(unsigned x)
-{
-	static char table[37] = {
-		32,  0,  1, 26,  2, 23, 27,
-		u,  3, 16, 24, 30, 28, 11,  u, 13,  4,
-		7, 17,  u, 25, 22, 31, 15, 29, 10, 12,
-		6,  u, 21, 14,  9,  5, 20,  8, 19, 18};
+int ntz9(unsigned x) {
 
-	x = (x & -x)%37;
-	return table[x];
+   static char table[37] = {32,  0,  1, 26,  2, 23, 27,
+                 u,  3, 16, 24, 30, 28, 11,  u, 13,  4,
+                 7, 17,  u, 25, 22, 31, 15, 29, 10, 12,
+                 6,  u, 21, 14,  9,  5, 20,  8, 19, 18};
+
+   x = (x & -x)%37;
+   return table[x];
 }
 
 /* Using a de Bruijn sequence. This is a table lookup with a 32-entry
@@ -267,7 +257,7 @@ int ntz11 (unsigned int n) {
 int errors;
 void error(int x, int y) {
    errors = errors + 1;
-   std::printf("Error for x = %08x, got %d\n", x, y);
+   printf("Error for x = %08x, got %d\n", x, y);
 }
 
 int main()
@@ -297,7 +287,7 @@ int main()
 		if (ntz1(test[i]) != test[i+1]) error(test[i], ntz1(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz1: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz1: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -305,7 +295,7 @@ int main()
 		if (ntz2(test[i]) != test[i+1]) error(test[i], ntz2(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz2: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz2: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -313,7 +303,7 @@ int main()
 		if (ntz3(test[i]) != test[i+1]) error(test[i], ntz3(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz3: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz3: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -321,7 +311,7 @@ int main()
 		if (ntz4(test[i]) != test[i+1]) error(test[i], ntz4(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz4: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz4: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -329,7 +319,7 @@ int main()
 		if (ntz4a(test[i]) != test[i+1]) error(test[i], ntz4a(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz4a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz4a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for(std::size_t k = 0; k < Count; ++k)
@@ -343,7 +333,7 @@ int main()
 	}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz5: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz5: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -351,7 +341,7 @@ int main()
 		if (ntz6(test[i]) != test[i+1]) error(test[i], ntz6(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz6: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz6: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -359,7 +349,7 @@ int main()
 		if (ntz6a(test[i]) != test[i+1]) error(test[i], ntz6a(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz6a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz6a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -367,7 +357,7 @@ int main()
 		if (ntz7(test[i]) != test[i+1]) error(test[i], ntz7(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz7: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz7: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -375,7 +365,7 @@ int main()
 		if (ntz7_christophe(test[i]) != test[i+1]) error(test[i], ntz7(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz7_christophe: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz7_christophe: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -383,7 +373,7 @@ int main()
 		if (ntz8(test[i]) != test[i+1]) error(test[i], ntz8(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz8: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz8: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -391,7 +381,7 @@ int main()
 		if (ntz8a(test[i]) != test[i+1]) error(test[i], ntz8a(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz8a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz8a: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -399,7 +389,7 @@ int main()
 		if (ntz9(test[i]) != test[i+1]) error(test[i], ntz9(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz9: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz9: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	TimestampBeg = std::clock();
 	for (std::size_t k = 0; k < Count; ++k)
@@ -407,10 +397,10 @@ int main()
 		if (ntz10(test[i]) != test[i+1]) error(test[i], ntz10(test[i]));}
 	TimestampEnd = std::clock();
 
-	std::printf("ntz10: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
+	printf("ntz10: %d clocks\n", static_cast<int>(TimestampEnd - TimestampBeg));
 
 	if (errors == 0)
-		std::printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
+		printf("Passed all %d cases.\n", static_cast<int>(sizeof(test)/8));
 
 #	endif//NDEBUG
 }

@@ -1,6 +1,5 @@
 #include <glm/ext/scalar_relational.hpp>
-#include <glm/ext/scalar_integer.hpp>
-#include <glm/ext/scalar_ulp.hpp>
+#include <glm/gtc/ulp.hpp>
 #include <cmath>
 
 static int test_equal_epsilon()
@@ -37,16 +36,16 @@ static int test_equal_ulps()
 {
 	int Error = 0;
 	
-	float const ULP1Plus = glm::nextFloat(1.0f);
+	float const ULP1Plus = glm::next_float(1.0f);
 	Error += glm::equal(1.0f, ULP1Plus, 1) ? 0 : 1;
 
-	float const ULP2Plus = glm::nextFloat(ULP1Plus);
+	float const ULP2Plus = glm::next_float(ULP1Plus);
 	Error += !glm::equal(1.0f, ULP2Plus, 1) ? 0 : 1;
 	
-	float const ULP1Minus = glm::prevFloat(1.0f);
+	float const ULP1Minus = glm::prev_float(1.0f);
 	Error += glm::equal(1.0f, ULP1Minus, 1) ? 0 : 1;
 
-	float const ULP2Minus = glm::prevFloat(ULP1Minus);
+	float const ULP2Minus = glm::prev_float(ULP1Minus);
 	Error += !glm::equal(1.0f, ULP2Minus, 1) ? 0 : 1;
 	
 	return Error;
@@ -56,37 +55,18 @@ static int test_notEqual_ulps()
 {
 	int Error = 0;
 	
-	float const ULP1Plus = glm::nextFloat(1.0f);
+	float const ULP1Plus = glm::next_float(1.0f);
 	Error += !glm::notEqual(1.0f, ULP1Plus, 1) ? 0 : 1;
 	
-	float const ULP2Plus = glm::nextFloat(ULP1Plus);
+	float const ULP2Plus = glm::next_float(ULP1Plus);
 	Error += glm::notEqual(1.0f, ULP2Plus, 1) ? 0 : 1;
 	
-	float const ULP1Minus = glm::prevFloat(1.0f);
+	float const ULP1Minus = glm::prev_float(1.0f);
 	Error += !glm::notEqual(1.0f, ULP1Minus, 1) ? 0 : 1;
 	
-	float const ULP2Minus = glm::prevFloat(ULP1Minus);
+	float const ULP2Minus = glm::prev_float(ULP1Minus);
 	Error += glm::notEqual(1.0f, ULP2Minus, 1) ? 0 : 1;
 	
-	return Error;
-}
-
-static int test_equal_sign()
-{
-	int Error = 0;
-
-	Error += !glm::equal(-0.0f, 0.0f, 2) ? 0 : 1;
-	Error += !glm::equal(-0.0, 0.0, 2) ? 0 : 1;
-
-	Error += !glm::equal(-1.0f, 2.0f, 2) ? 0 : 1;
-	Error += !glm::equal(-1.0, 2.0, 2) ? 0 : 1;
-
-	Error += !glm::equal(-0.00001f, 1.00000f, 2) ? 0 : 1;
-	Error += !glm::equal(-0.00001, 1.00000, 2) ? 0 : 1;
-
-	Error += !glm::equal(-1.0f, 1.0f, 2) ? 0 : 1;
-	Error += !glm::equal(-1.0, 1.0, 2) ? 0 : 1;
-
 	return Error;
 }
 
@@ -99,8 +79,6 @@ int main()
 
 	Error += test_equal_ulps();
 	Error += test_notEqual_ulps();
-
-	Error += test_equal_sign();
 
 	return Error;
 }

@@ -46,10 +46,10 @@ static int comp_mat2_div_mat2(std::size_t Samples)
 	packedMatType const Scale(0.01, 0.02, 0.03, 0.05);
 
 	std::vector<packedMatType> SISD;
-	std::printf("- SISD: %d us\n", launch_mat_div_mat<packedMatType>(SISD, Transform, Scale, Samples));
+	printf("- SISD: %d us\n", launch_mat_div_mat<packedMatType>(SISD, Transform, Scale, Samples));
 
 	std::vector<alignedMatType> SIMD;
-	std::printf("- SIMD: %d us\n", launch_mat_div_mat<alignedMatType>(SIMD, Transform, Scale, Samples));
+	printf("- SIMD: %d us\n", launch_mat_div_mat<alignedMatType>(SIMD, Transform, Scale, Samples));
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -73,10 +73,10 @@ static int comp_mat3_div_mat3(std::size_t Samples)
 	packedMatType const Scale(0.01, 0.02, 0.03, 0.05, 0.01, 0.02, 0.03, 0.05, 0.01);
 
 	std::vector<packedMatType> SISD;
-	std::printf("- SISD: %d us\n", launch_mat_div_mat<packedMatType>(SISD, Transform, Scale, Samples));
+	printf("- SISD: %d us\n", launch_mat_div_mat<packedMatType>(SISD, Transform, Scale, Samples));
 
 	std::vector<alignedMatType> SIMD;
-	std::printf("- SIMD: %d us\n", launch_mat_div_mat<alignedMatType>(SIMD, Transform, Scale, Samples));
+	printf("- SIMD: %d us\n", launch_mat_div_mat<alignedMatType>(SIMD, Transform, Scale, Samples));
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -100,10 +100,10 @@ static int comp_mat4_div_mat4(std::size_t Samples)
 	packedMatType const Scale(0.01, 0.02, 0.05, 0.04, 0.02, 0.08, 0.05, 0.01, 0.08, 0.03, 0.05, 0.06, 0.02, 0.03, 0.07, 0.05);
 
 	std::vector<packedMatType> SISD;
-	std::printf("- SISD: %d us\n", launch_mat_div_mat<packedMatType>(SISD, Transform, Scale, Samples));
+	printf("- SISD: %d us\n", launch_mat_div_mat<packedMatType>(SISD, Transform, Scale, Samples));
 
 	std::vector<alignedMatType> SIMD;
-	std::printf("- SIMD: %d us\n", launch_mat_div_mat<alignedMatType>(SIMD, Transform, Scale, Samples));
+	printf("- SIMD: %d us\n", launch_mat_div_mat<alignedMatType>(SIMD, Transform, Scale, Samples));
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -122,22 +122,22 @@ int main()
 
 	int Error = 0;
 
-	std::printf("mat2 / mat2:\n");
+	printf("mat2 / mat2:\n");
 	Error += comp_mat2_div_mat2<glm::mat2, glm::aligned_mat2>(Samples);
 	
-	std::printf("dmat2 / dmat2:\n");
+	printf("dmat2 / dmat2:\n");
 	Error += comp_mat2_div_mat2<glm::dmat2, glm::aligned_dmat2>(Samples);
 
-	std::printf("mat3 / mat3:\n");
+	printf("mat3 / mat3:\n");
 	Error += comp_mat3_div_mat3<glm::mat3, glm::aligned_mat3>(Samples);
 	
-	std::printf("dmat3 / dmat3:\n");
+	printf("dmat3 / dmat3:\n");
 	Error += comp_mat3_div_mat3<glm::dmat3, glm::aligned_dmat3>(Samples);
 
-	std::printf("mat4 / mat4:\n");
+	printf("mat4 / mat4:\n");
 	Error += comp_mat4_div_mat4<glm::mat4, glm::aligned_mat4>(Samples);
 	
-	std::printf("dmat4 / dmat4:\n");
+	printf("dmat4 / dmat4:\n");
 	Error += comp_mat4_div_mat4<glm::dmat4, glm::aligned_dmat4>(Samples);
 
 	return Error;

@@ -1,41 +1,39 @@
 //
 // Copyright(c) 2015 Gabi Melman.
 // Distributed under the MIT License (http://opensource.org/licenses/MIT)
-
+//
+//
 // spdlog usage example
+//
+//
 
 #include <cstdio>
 
-void load_levels_example();
 void stdout_logger_example();
 void basic_example();
 void rotating_example();
 void daily_example();
 void async_example();
 void binary_example();
-void stopwatch_example();
 void trace_example();
 void multi_sink_example();
 void user_defined_example();
 void err_handler_example();
 void syslog_example();
-void custom_flags_example();
+void clone_example();
+
+#define SPDLOG_TRACE_ON
 
 #include "spdlog/spdlog.h"
-#include "spdlog/cfg/env.h" // support for loading levels from the environment variable
 
 int main(int, char *[])
 {
-    // Log levels can be loaded from argv/env using "SPDLOG_LEVEL"
-    load_levels_example();
-
-    spdlog::info("Welcome to spdlog version {}.{}.{}  !", SPDLOG_VER_MAJOR, SPDLOG_VER_MINOR, SPDLOG_VER_PATCH);
-
+    spdlog::info("Welcome to spdlog version {}.{}.{} !", SPDLOG_VER_MAJOR, SPDLOG_VER_MINOR, SPDLOG_VER_PATCH);
     spdlog::warn("Easy padding in numbers like {:08d}", 12);
     spdlog::critical("Support for int: {0:d};  hex: {0:x};  oct: {0:o}; bin: {0:b}", 42);
     spdlog::info("Support for floats {:03.2f}", 1.23456);
     spdlog::info("Positional args are {1} {0}..", "too", "supported");
-    spdlog::info("{:>8} aligned, {:<8} aligned", "right", "left");
+    spdlog::info("{:>8} aligned, {:>8} aligned", "right", "left");
 
     // Runtime log levels
     spdlog::set_level(spdlog::level::info); // Set global log level to info
@@ -47,18 +45,6 @@ int main(int, char *[])
     spdlog::set_pattern("[%H:%M:%S %z] [%^%L%$] [thread %t] %v");
     spdlog::info("This an info message with custom format");
     spdlog::set_pattern("%+"); // back to default format
-    spdlog::set_level(spdlog::level::info);
-
-    // Backtrace support
-    // Loggers can store in a ring buffer all messages (including debug/trace) for later inspection.
-    // When needed, call dump_backtrace() to see what happened:
-    spdlog::enable_backtrace(10); // create ring buffer with capacity of 10  messages
-    for (int i = 0; i < 100; i++)
-    {
-        spdlog::debug("Backtrace message {}", i); // not logged..
-    }
-    // e.g. if some error happened:
-    spdlog::dump_backtrace(); // log them now!
 
     try
     {
@@ -66,14 +52,13 @@ int main(int, char *[])
         basic_example();
         rotating_example();
         daily_example();
+        clone_example();
         async_example();
         binary_example();
         multi_sink_example();
         user_defined_example();
         err_handler_example();
         trace_example();
-        stopwatch_example();
-        custom_flags_example();
 
         // Flush all *registered* loggers using a worker thread every 3 seconds.
         // note: registered loggers *must* be thread safe for this to work correctly!
@@ -126,16 +111,12 @@ void daily_example()
     auto daily_logger = spdlog::daily_logger_mt("daily_logger", "logs/daily.txt", 2, 30);
 }
 
-#include "spdlog/cfg/env.h"
-void load_levels_example()
+// Clone a logger and give it new name.
+// Useful for creating component/subsystem loggers from some "root" logger.
+void clone_example()
 {
-    // Set the log level to "info" and mylogger to "trace":
-    // SPDLOG_LEVEL=info,mylogger=trace && ./example
-    spdlog::cfg::load_env_levels();
-    // or from command line:
-    // ./example SPDLOG_LEVEL=info,mylogger=trace
-    // #include "spdlog/cfg/argv.h" // for loading levels from argv
-    // spdlog::cfg::load_argv_levels(args, argv);
+    auto network_logger = spdlog::default_logger()->clone("network");
+    network_logger->info("Logging network stuff..");
 }
 
 #include "spdlog/async.h"
@@ -165,7 +146,7 @@ void async_example()
 #include "spdlog/fmt/bin_to_hex.h"
 void binary_example()
 {
-    std::vector<char> buf(80);
+    std::vector<char> buf;
     for (int i = 0; i < 80; i++)
     {
         buf.push_back(static_cast<char>(i & 0xff));
@@ -176,32 +157,15 @@ void binary_example()
     // logger->info("uppercase: {:X}", spdlog::to_hex(buf));
     // logger->info("uppercase, no delimiters: {:Xs}", spdlog::to_hex(buf));
     // logger->info("uppercase, no delimiters, no position info: {:Xsp}", spdlog::to_hex(buf));
-    // logger->info("hexdump style: {:a}", spdlog::to_hex(buf));
-    // logger->info("hexdump style, 20 chars per line {:a}", spdlog::to_hex(buf, 20));
 }
 
 // Compile time log levels.
-// define SPDLOG_ACTIVE_LEVEL to required level (e.g. SPDLOG_LEVEL_TRACE)
+// Must define SPDLOG_DEBUG_ON or SPDLOG_TRACE_ON before including spdlog.h to turn them on.
 void trace_example()
 {
-    // trace from default logger
-    SPDLOG_TRACE("Some trace message.. {} ,{}", 1, 3.23);
-    // debug from default logger
-    SPDLOG_DEBUG("Some debug message.. {} ,{}", 1, 3.23);
-
-    // trace from logger object
     auto logger = spdlog::get("file_logger");
-    SPDLOG_LOGGER_TRACE(logger, "another trace message");
-}
-
-// stopwatch example
-#include "spdlog/stopwatch.h"
-#include <thread>
-void stopwatch_example()
-{
-    spdlog::stopwatch sw;
-    std::this_thread::sleep_for(std::chrono::milliseconds(123));
-    spdlog::info("Stopwatch: {} seconds", sw);
+    SPDLOG_TRACE(logger, "Enabled only #ifdef SPDLOG_TRACE_ON..{} ,{}", 1, 3.23);
+    SPDLOG_DEBUG(logger, "Enabled only #ifdef SPDLOG_DEBUG_ON.. {} ,{}", 1, 3.23);
 }
 
 // A logger with multiple sinks (stdout and file) - each with a different format and log level.
@@ -264,31 +228,5 @@ void android_example()
     auto android_logger = spdlog::android_logger_mt("android", tag);
     android_logger->critical("Use \"adb shell logcat\" to view this message.");
 }
+
 #endif
-
-// Log patterns can contain custom flags.
-// this will add custom flag '%*' which will be bound to a <my_formatter_flag> instance
-#include "spdlog/pattern_formatter.h"
-class my_formatter_flag : public spdlog::custom_flag_formatter
-{
-public:
-    void format(const spdlog::details::log_msg &, const std::tm &, spdlog::memory_buf_t &dest) override
-    {
-        std::string some_txt = "custom-flag";
-        dest.append(some_txt.data(), some_txt.data() + some_txt.size());
-    }
-
-    std::unique_ptr<custom_flag_formatter> clone() const override
-    {
-        return spdlog::details::make_unique<my_formatter_flag>();
-    }
-};
-
-void custom_flags_example()
-{
-
-    using spdlog::details::make_unique; // for pre c++14
-    auto formatter = make_unique<spdlog::pattern_formatter>();
-    formatter->add_flag<my_formatter_flag>('*').set_pattern("[%n] [%*] [%^%l%$] %v");
-    spdlog::set_formatter(std::move(formatter));
-}

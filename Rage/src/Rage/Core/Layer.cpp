@@ -1,5 +1,5 @@
 #include "rapch.h"
-#include "Layer.h"
+#include "Rage/Core/Layer.h"
 
 namespace Rage {
 
@@ -7,10 +7,5 @@ namespace Rage {
 		: m_DebugName(debugName)
 	{
 	}
-
-	Layer::~Layer()
-	{
-
-	}
-
+	
 }

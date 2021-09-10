@@ -1,11 +1,10 @@
-#include <glm/ext/scalar_ulp.hpp>
-
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtc/type_precision.hpp>
 #include <glm/gtx/fast_trigonometry.hpp>
 #include <glm/gtx/integer.hpp>
 #include <glm/gtx/common.hpp>
 #include <glm/gtc/constants.hpp>
+#include <glm/gtc/ulp.hpp>
 #include <glm/gtc/vec1.hpp>
 #include <glm/trigonometric.hpp>
 #include <cmath>
@@ -22,11 +21,11 @@ namespace fastCos
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastCos(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::cos(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -56,11 +55,11 @@ namespace fastSin
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastSin(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::sin(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -82,11 +81,11 @@ namespace fastTan
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastTan(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for (float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for (float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::tan(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -108,11 +107,11 @@ namespace fastAcos
 		float result = 0.f;
 
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastAcos(i);
 
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::acos(i);
 
 		const std::clock_t timestamp3 = std::clock();
@@ -134,10 +133,10 @@ namespace fastAsin
 		const float end = glm::pi<float>();
 		float result = 0.f;
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastAsin(i);
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::asin(i);
 		const std::clock_t timestamp3 = std::clock();
 		const std::clock_t time_fast = timestamp2 - timestamp1;
@@ -157,10 +156,10 @@ namespace fastAtan
 		const float end = glm::pi<float>();
 		float result = 0.f;
 		const std::clock_t timestamp1 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::fastAtan(i);
 		const std::clock_t timestamp2 = std::clock();
-		for(float i = begin; i < end; i = NextFloat ? glm::nextFloat(i) : i += 0.1f)
+		for(float i = begin; i < end; i = NextFloat ? glm::next_float(i) : i += 0.1f)
 			result = glm::atan(i);
 		const std::clock_t timestamp3 = std::clock();
 		const std::clock_t time_fast = timestamp2 - timestamp1;
@@ -239,12 +238,12 @@ namespace taylorCos
 		std::vector<glm::vec4> Results;
 		Results.resize(Samples);
 
-		float const Steps = (End - Begin) / static_cast<float>(Samples);
+		float Steps = (End - Begin) / Samples;
 
 		std::clock_t const TimeStampBegin = std::clock();
 
 		for(std::size_t i = 0; i < Samples; ++i)
-			Results[i] = fastCosNew(AngleShift + glm::vec4(Begin + Steps * static_cast<float>(i)));
+			Results[i] = fastCosNew(AngleShift + glm::vec4(Begin + Steps * i));
 
 		std::clock_t const TimeStampEnd = std::clock();
 
@@ -280,12 +279,12 @@ namespace taylorCos
 		std::vector<glm::vec4> Results;
 		Results.resize(Samples);
 
-		float const Steps = (End - Begin) / static_cast<float>(Samples);
+		float Steps = (End - Begin) / Samples;
 
 		std::clock_t const TimeStampBegin = std::clock();
 
 		for(std::size_t i = 0; i < Samples; ++i)
-			Results[i] = taylorCos::fastCosDeterminisctic(AngleShift + glm::vec4(Begin + Steps * static_cast<float>(i)));
+			Results[i] = taylorCos::fastCosDeterminisctic(AngleShift + glm::vec4(Begin + Steps * i));
 
 		std::clock_t const TimeStampEnd = std::clock();
 
@@ -327,12 +326,12 @@ namespace taylorCos
 		std::vector<glm::vec4> Results;
 		Results.resize(Samples);
 
-		float const Steps = (End - Begin) / static_cast<float>(Samples);
+		float Steps = (End - Begin) / Samples;
 
 		std::clock_t const TimeStampBegin = std::clock();
 
 		for(std::size_t i = 0; i < Samples; ++i)
-			Results[i] = taylorCos::fastRefCos(AngleShift + glm::vec4(Begin + Steps * static_cast<float>(i)));
+			Results[i] = taylorCos::fastRefCos(AngleShift + glm::vec4(Begin + Steps * i));
 
 		std::clock_t const TimeStampEnd = std::clock();
 
@@ -349,12 +348,12 @@ namespace taylorCos
 		std::vector<glm::vec4> Results;
 		Results.resize(Samples);
 
-		float const Steps = (End - Begin) / static_cast<float>(Samples);
+		float Steps = (End - Begin) / Samples;
 
 		std::clock_t const TimeStampBegin = std::clock();
 
 		for(std::size_t i = 0; i < Samples; ++i)
-			Results[i] = glm::fastCos(AngleShift + glm::vec4(Begin + Steps * static_cast<float>(i)));
+			Results[i] = glm::fastCos(AngleShift + glm::vec4(Begin + Steps * i));
 
 		std::clock_t const TimeStampEnd = std::clock();
 
@@ -371,12 +370,12 @@ namespace taylorCos
 		std::vector<glm::vec4> Results;
 		Results.resize(Samples);
 
-		float const Steps = (End - Begin) / static_cast<float>(Samples);
+		float Steps = (End - Begin) / Samples;
 
 		std::clock_t const TimeStampBegin = std::clock();
 
 		for(std::size_t i = 0; i < Samples; ++i)
-			Results[i] = glm::cos(AngleShift + glm::vec4(Begin + Steps * static_cast<float>(i)));
+			Results[i] = glm::cos(AngleShift + glm::vec4(Begin + Steps * i));
 
 		std::clock_t const TimeStampEnd = std::clock();
 
@@ -466,12 +465,12 @@ namespace taylor2
 		std::vector<float> Results;
 		Results.resize(Samples);
 
-		float const Steps = (End - Begin) / static_cast<float>(Samples);
+		float Steps = (End - Begin) / Samples;
 
 		std::clock_t const TimeStampBegin = std::clock();
 
 		for(std::size_t i = 0; i < Samples; ++i)
-			Results[i] = taylorCosA(AngleShift.x + Begin + Steps * static_cast<float>(i));
+			Results[i] = taylorCosA(AngleShift.x + Begin + Steps * i);
 
 		std::clock_t const TimeStampEnd = std::clock();
 
@@ -488,12 +487,12 @@ namespace taylor2
 		std::vector<float> Results;
 		Results.resize(Samples);
 
-		float const Steps = (End - Begin) / static_cast<float>(Samples);
+		float Steps = (End - Begin) / Samples;
 
 		std::clock_t const TimeStampBegin = std::clock();
 
 		for(std::size_t i = 0; i < Samples; ++i)
-			Results[i] = taylorCosB(AngleShift.x + Begin + Steps * static_cast<float>(i));
+			Results[i] = taylorCosB(AngleShift.x + Begin + Steps * i);
 
 		std::clock_t const TimeStampEnd = std::clock();
 
@@ -510,12 +509,12 @@ namespace taylor2
 		std::vector<float> Results;
 		Results.resize(Samples);
 
-		float const Steps = (End - Begin) / static_cast<float>(Samples);
+		float Steps = (End - Begin) / Samples;
 
 		std::clock_t const TimeStampBegin = std::clock();
 
 		for(std::size_t i = 0; i < Samples; ++i)
-			Results[i] = taylorCosC(AngleShift.x + Begin + Steps * static_cast<float>(i));
+			Results[i] = taylorCosC(AngleShift.x + Begin + Steps * i);
 
 		std::clock_t const TimeStampEnd = std::clock();
 

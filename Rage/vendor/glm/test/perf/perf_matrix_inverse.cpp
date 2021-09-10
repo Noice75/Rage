@@ -45,10 +45,10 @@ static int comp_mat2_inverse(std::size_t Samples)
 	packedMatType const Scale(0.01, 0.02, 0.03, 0.05);
 
 	std::vector<packedMatType> SISD;
-	std::printf("- SISD: %d us\n", launch_mat_inverse<packedMatType>(SISD, Scale, Samples));
+	printf("- SISD: %d us\n", launch_mat_inverse<packedMatType>(SISD, Scale, Samples));
 
 	std::vector<alignedMatType> SIMD;
-	std::printf("- SIMD: %d us\n", launch_mat_inverse<alignedMatType>(SIMD, Scale, Samples));
+	printf("- SIMD: %d us\n", launch_mat_inverse<alignedMatType>(SIMD, Scale, Samples));
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -71,10 +71,10 @@ static int comp_mat3_inverse(std::size_t Samples)
 	packedMatType const Scale(0.01, 0.02, 0.03, 0.05, 0.01, 0.02, 0.03, 0.05, 0.01);
 
 	std::vector<packedMatType> SISD;
-	std::printf("- SISD: %d us\n", launch_mat_inverse<packedMatType>(SISD, Scale, Samples));
+	printf("- SISD: %d us\n", launch_mat_inverse<packedMatType>(SISD, Scale, Samples));
 
 	std::vector<alignedMatType> SIMD;
-	std::printf("- SIMD: %d us\n", launch_mat_inverse<alignedMatType>(SIMD, Scale, Samples));
+	printf("- SIMD: %d us\n", launch_mat_inverse<alignedMatType>(SIMD, Scale, Samples));
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -97,10 +97,10 @@ static int comp_mat4_inverse(std::size_t Samples)
 	packedMatType const Scale(0.01, 0.02, 0.05, 0.04, 0.02, 0.08, 0.05, 0.01, 0.08, 0.03, 0.05, 0.06, 0.02, 0.03, 0.07, 0.05);
 
 	std::vector<packedMatType> SISD;
-	std::printf("- SISD: %d us\n", launch_mat_inverse<packedMatType>(SISD, Scale, Samples));
+	printf("- SISD: %d us\n", launch_mat_inverse<packedMatType>(SISD, Scale, Samples));
 
 	std::vector<alignedMatType> SIMD;
-	std::printf("- SIMD: %d us\n", launch_mat_inverse<alignedMatType>(SIMD, Scale, Samples));
+	printf("- SIMD: %d us\n", launch_mat_inverse<alignedMatType>(SIMD, Scale, Samples));
 
 	for(std::size_t i = 0; i < Samples; ++i)
 	{
@@ -119,22 +119,22 @@ int main()
 
 	int Error = 0;
 
-	std::printf("glm::inverse(mat2):\n");
+	printf("glm::inverse(mat2):\n");
 	Error += comp_mat2_inverse<glm::mat2, glm::aligned_mat2>(Samples);
 	
-	std::printf("glm::inverse(dmat2):\n");
+	printf("glm::inverse(dmat2):\n");
 	Error += comp_mat2_inverse<glm::dmat2, glm::aligned_dmat2>(Samples);
 
-	std::printf("glm::inverse(mat3):\n");
+	printf("glm::inverse(mat3):\n");
 	Error += comp_mat3_inverse<glm::mat3, glm::aligned_mat3>(Samples);
 	
-	std::printf("glm::inverse(dmat3):\n");
+	printf("glm::inverse(dmat3):\n");
 	Error += comp_mat3_inverse<glm::dmat3, glm::aligned_dmat3>(Samples);
 
-	std::printf("glm::inverse(mat4):\n");
+	printf("glm::inverse(mat4):\n");
 	Error += comp_mat4_inverse<glm::mat4, glm::aligned_mat4>(Samples);
 	
-	std::printf("glm::inverse(dmat4):\n");
+	printf("glm::inverse(dmat4):\n");
 	Error += comp_mat4_inverse<glm::dmat4, glm::aligned_dmat4>(Samples);
 
 	return Error;

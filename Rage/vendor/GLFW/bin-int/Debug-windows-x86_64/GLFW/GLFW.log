@@ -13,5 +13,4 @@
   win32_time.c
   win32_window.c
   window.c
-  Generating Code...
-  GLFW.vcxproj -> E:\dev\Rage\Rage\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.lib
+  GLFW.vcxproj -> E:\dev\HZ\Hazel-content-browser\Rage\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.lib
