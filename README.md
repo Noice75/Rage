@@ -1,33 +1,35 @@
 # Rage
 Rage Game Engine
 
-Rage is primarily an early-stage interactive application and rendering engine for Windows. Currently not much is implemented
+Rage is primarily an early-stage interactive application and rendering engine for Windows.
 
+# Status
+Currently being developed (Active)
 
-Plan :
+# Plan :
 
 The Plan for Rage is to make powerful 3D/2D Game Engine
 
-Main features to come :
+# Main features to come :
 
-Fast 2D rendering (UI, particles, sprites, etc.)
 High-fidelity Physically-Based 3D rendering (this will be expanded later, 2D to come first)
 Support for Mac, Linux, Android and iOS
 Native rendering API support (DirectX, Vulkan, Metal)
-Fully featured viewer and editor applications
 Fully scripted interaction and behavior
 Integrated 3rd party 2D and 3D physics engine
 Procedural terrain and world generation
 Artificial Intelligence
 Audio system
 
-Features currently implemented :
+# Features currently implemented :
 
 1) imgui with Docking Windows
 2) Input Pooling
 3) Keyboard and mouse Inputs
+4) Fast 2D rendering (UI, particles, sprites, etc.)
+5) Fully featured viewer and editor applications
 
-Steps To Get It Running :
+# Steps To Get It Running :
 
 1) You will need Visual Studio 2019 or higher with C++
 2) Before opening solution in visual studio run "GenerateProjects.bat" file
@@ -36,6 +38,11 @@ Steps To Get It Running :
 5) Try to run the program using F5 key 
 6) Now you Can Run and Use the Engine
 
+# About Me
+
+I am a individual devloper supporting the development of Rage Engine
 
 
+# Contribution
 
+Send a pull request and i'll accept it !
