@@ -39,6 +39,12 @@ Audio system
 6) Try to run the program using F5 key 
 7) You are all set to Run and Use the Engine
 
+# Dependency
+
+1) Python should be installed (version 3.6 +)
+2) Python should be set as environment variable in your computer (else python not found error occurs while running Setup.bat) If error occurs reffer [Here](https://www.javatpoint.com/how-to-set-python-path)
+3) Visual Studio 2019 or higher with C++
+
 # About Me
 
 I am a individual devloper supporting the development of Rage Engine
