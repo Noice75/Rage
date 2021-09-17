@@ -26,6 +26,8 @@ namespace Rage {
 		RA_PROFILE_FUNCTION();
 
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
+		m_IconPlay = Texture2D::Create("Resources/Icons/PlayButton.png");
+		m_IconStop = Texture2D::Create("Resources/Icons/StopButton.png");
 
 		FramebufferSpecification fbSpec;
 		fbSpec.Attachments = { FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RED_INTEGER, FramebufferTextureFormat::Depth };
@@ -44,11 +46,6 @@ namespace Rage {
 		}
 
 		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
-
-		// Editor Icons
-		m_IconPlay = Texture2D::Create("Resources/Icons/PlayButton.png");
-		m_IconStop = Texture2D::Create("Resources/Icons/StopButton.png");
-
 
 #if 0
 		// Entity
@@ -124,7 +121,6 @@ namespace Rage {
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
-
 		// Render
 		Renderer2D::ResetStats();
 		m_Framebuffer->Bind();
@@ -134,8 +130,6 @@ namespace Rage {
 		// Clear our entity ID attachment to -1
 		m_Framebuffer->ClearAttachment(1, -1);
 
-
-		// Update
 		switch (m_SceneState)
 		{
 			case SceneState::Edit:
@@ -144,6 +138,7 @@ namespace Rage {
 					m_CameraController.OnUpdate(ts);
 
 				m_EditorCamera.OnUpdate(ts);
+
 				m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 				break;
 			}
@@ -153,7 +148,6 @@ namespace Rage {
 				break;
 			}
 		}
-	
 
 		auto[mx, my] = ImGui::GetMousePos();
 		mx -= m_ViewportBounds[0].x;
@@ -239,6 +233,9 @@ namespace Rage {
 				if (ImGui::MenuItem("Open...", "Ctrl+O"))
 					OpenScene();
 
+				if (ImGui::MenuItem("Save", "Ctrl+S"))
+					SaveScene();
+
 				if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
 					SaveSceneAs();
 
@@ -306,7 +303,7 @@ namespace Rage {
 			ImGuizmo::SetRect(m_ViewportBounds[0].x, m_ViewportBounds[0].y, m_ViewportBounds[1].x - m_ViewportBounds[0].x, m_ViewportBounds[1].y - m_ViewportBounds[0].y);
 
 			// Camera
-
+			
 			// Runtime camera from entity
 			// auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
 			// const auto& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
@@ -360,15 +357,17 @@ namespace Rage {
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 2));
 		ImGui::PushStyleVar(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0, 0));
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
-		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.305f, 0.31f, 0.5f));
-		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.15f, 0.1505f, 0.151f, 0.5f));
+		auto& colors = ImGui::GetStyle().Colors;
+		const auto& buttonHovered = colors[ImGuiCol_ButtonHovered];
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(buttonHovered.x, buttonHovered.y, buttonHovered.z, 0.5f));
+		const auto& buttonActive = colors[ImGuiCol_ButtonActive];
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(buttonActive.x, buttonActive.y, buttonActive.z, 0.5f));
 
 		ImGui::Begin("##toolbar", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 
-		Ref<Texture2D> icon = m_SceneState == SceneState::Edit ? m_IconPlay : m_IconStop;
 		float size = ImGui::GetWindowHeight() - 4.0f;
-		ImGui::SameLine((ImGui::GetWindowContentRegionMax().x * 0.5f)  - (size * 0.5f));
-
+		Ref<Texture2D> icon = m_SceneState == SceneState::Edit ? m_IconPlay : m_IconStop;
+		ImGui::SetCursorPosX((ImGui::GetWindowContentRegionMax().x * 0.5f) - (size * 0.5f));
 		if (ImGui::ImageButton((ImTextureID)icon->GetRendererID(), ImVec2(size, size), ImVec2(0, 0), ImVec2(1, 1), 0))
 		{
 			if (m_SceneState == SceneState::Edit)
@@ -376,20 +375,9 @@ namespace Rage {
 			else if (m_SceneState == SceneState::Play)
 				OnSceneStop();
 		}
-
-		ImGui::PopStyleColor(3);
 		ImGui::PopStyleVar(2);
+		ImGui::PopStyleColor(3);
 		ImGui::End();
-	}
-
-	void EditorLayer::OnScenePlay()
-	{
-		m_SceneState = SceneState::Play;
-	}
-
-	void EditorLayer::OnSceneStop()
-	{
-		m_SceneState = SceneState::Edit;
 	}
 
 	void EditorLayer::OnEvent(Event& e)
@@ -429,8 +417,13 @@ namespace Rage {
 			}
 			case Key::S:
 			{
-				if (control && shift)
-					SaveSceneAs();
+				if (control)
+				{
+					if (shift)
+						SaveSceneAs();
+					else
+						SaveScene();
+				}
 
 				break;
 			}
@@ -478,6 +471,7 @@ namespace Rage {
 		m_ActiveScene = CreateRef<Scene>();
 		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+		m_ActiveScenePath = "";
 	}
 
 	void EditorLayer::OpenScene()
@@ -489,12 +483,37 @@ namespace Rage {
 
 	void EditorLayer::OpenScene(const std::filesystem::path& path)
 	{
-		m_ActiveScene = CreateRef<Scene>();
-		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+		if (path.extension().string() != ".rage")
+		{
+			RA_WARN("Could not load {0} - not a scene file", path.filename().string());
+			return;
+		}
+		
+		Ref<Scene> newScene = CreateRef<Scene>();
+		SceneSerializer serializer(newScene);
+		if (serializer.Deserialize(path.string()))
+		{
+			m_ActiveScene = newScene;
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+			m_ActiveScenePath = path;
+		}
+	}
+
+	void EditorLayer::SaveScene()
+	{
+		if (m_ActiveScenePath.empty())
+			SaveSceneAs();
+		else
+			SerializeScene(m_ActiveScenePath);
+	}
+
+	void EditorLayer::SerializeScene(const std::filesystem::path& path)
+	{
+		RA_CORE_ASSERT(!path.empty());
 
 		SceneSerializer serializer(m_ActiveScene);
-		serializer.Deserialize(path.string());
+		serializer.Serialize(path.string());
 	}
 
 	void EditorLayer::SaveSceneAs()
@@ -502,9 +521,22 @@ namespace Rage {
 		std::string filepath = FileDialogs::SaveFile("Rage Scene (*.Rage)\0*.Rage\0");
 		if (!filepath.empty())
 		{
-			SceneSerializer serializer(m_ActiveScene);
-			serializer.Serialize(filepath);
+			SerializeScene(filepath);
+			m_ActiveScenePath = filepath;
 		}
+	}
+
+	void EditorLayer::OnScenePlay()
+	{
+		m_ActiveScene->OnRuntimeStart();
+		m_SceneState = SceneState::Play;
+	}
+
+	void EditorLayer::OnSceneStop()
+	{
+		m_ActiveScene->OnRuntimeStop();
+		m_SceneState = SceneState::Edit;
+
 	}
 
 }

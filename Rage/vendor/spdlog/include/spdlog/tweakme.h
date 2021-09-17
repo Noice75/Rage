@@ -15,7 +15,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Under Linux, the much faster CLOCK_REALTIME_COARSE clock can be used.
 // This clock is less accurate - can be off by dozens of millis - depending on
-// the kernel RA.
+// the kernel HZ.
 // Uncomment to use it instead of the regular clock.
 //
 // #define SPDLOG_CLOCK_COARSE

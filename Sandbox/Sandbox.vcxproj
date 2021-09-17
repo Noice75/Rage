@@ -91,6 +91,9 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Q /E /Y /I "$(SolutionDir)\Rage\vendor\VulkanSDK\Bin" "..\bin\Debug-windows-x86_64\Sandbox"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

@@ -1,6 +1,5 @@
 # Binaries
 **/bin/
-!vendor/premake/bin/
 bin-int/
 
 # Rage files
@@ -15,5 +14,5 @@ bin-int/
 
 # Directories
 Rage/vendor/VulkanSDK
-Ragelnut/assets/cache
+Ragenut/assets/cache
 scripts/__pycache__

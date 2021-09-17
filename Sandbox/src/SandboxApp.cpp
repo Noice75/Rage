@@ -7,7 +7,7 @@
 class Sandbox : public Rage::Application
 {
 public:
-	Sandbox()
+	Sandbox(Rage::ApplicationCommandLineArgs args)
 	{
 		// PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
@@ -18,7 +18,7 @@ public:
 	}
 };
 
-Rage::Application* Rage::CreateApplication()
+Rage::Application* Rage::CreateApplication(Rage::ApplicationCommandLineArgs args)
 {
-	return new Sandbox();
+	return new Sandbox(args);
 }

@@ -12,6 +12,7 @@ IncludeDir["ImGui"] = "%{wks.location}/Rage/vendor/ImGui"
 IncludeDir["ImGuizmo"] = "%{wks.location}/Rage/vendor/ImGuizmo"
 IncludeDir["glm"] = "%{wks.location}/Rage/vendor/glm"
 IncludeDir["entt"] = "%{wks.location}/Rage/vendor/entt/include"
+IncludeDir["Box2D"] = "%{wks.location}/Rage/vendor/Box2D/include"
 IncludeDir["shaderc"] = "%{wks.location}/Rage/vendor/shaderc/include"
 IncludeDir["SPIRV_Cross"] = "%{wks.location}/Rage/vendor/SPIRV-Cross"
 IncludeDir["VulkanSDK"] = "%{VULKAN_SDK}/Include"
@@ -20,6 +21,7 @@ LibraryDir = {}
 
 LibraryDir["VulkanSDK"] = "%{VULKAN_SDK}/Lib"
 LibraryDir["VulkanSDK_Debug"] = "%{wks.location}/Rage/vendor/VulkanSDK/Lib"
+LibraryDir["VulkanSDK_DebugDLL"] = "%{wks.location}/Rage/vendor/VulkanSDK/Bin"
 
 Library = {}
 Library["Vulkan"] = "%{LibraryDir.VulkanSDK}/vulkan-1.lib"

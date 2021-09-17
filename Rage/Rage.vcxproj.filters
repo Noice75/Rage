@@ -138,6 +138,9 @@
     <ClInclude Include="src\Rage\Core\Timestep.h">
       <Filter>src\Rage\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rage\Core\UUID.h">
+      <Filter>src\Rage\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rage\Core\Window.h">
       <Filter>src\Rage\Core</Filter>
     </ClInclude>
@@ -1368,6 +1371,9 @@
       <Filter>src\Rage\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Rage\Core\Log.cpp">
+      <Filter>src\Rage\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rage\Core\UUID.cpp">
       <Filter>src\Rage\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Rage\Core\Window.cpp">

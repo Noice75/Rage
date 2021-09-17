@@ -20,3 +20,6 @@
 [submodule "Rage/vendor/ImGuizmo"]
 	path = Rage/vendor/ImGuizmo
 	url = https://github.com/thecherno/imguizmo
+[submodule "Rage/vendor/Box2D"]
+	path = Rage/vendor/Box2D
+	url = https://github.com/TheCherno/Box2D

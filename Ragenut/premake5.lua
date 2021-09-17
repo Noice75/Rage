@@ -35,6 +35,11 @@ project "Ragenut"
 		defines "RA_DEBUG"
 		runtime "Debug"
 		symbols "on"
+		
+		postbuildcommands
+		{
+			"{COPYDIR} \"%{LibraryDir.VulkanSDK_DebugDLL}\" \"%{cfg.targetdir}\""
+		}
 
 	filter "configurations:Release"
 		defines "RA_RELEASE"
